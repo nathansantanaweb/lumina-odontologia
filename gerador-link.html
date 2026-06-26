@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gerador de link — Lumina (uso interno)</title>
+<meta name="robots" content="noindex" />
+<style>
+  :root{ --ink:#0A0E16; --painel:#121a26; --borda:#26314a; --ouro:#E9CE86; --ouro2:#C49B45; --txt:#ECE6D8; --suave:#8E96A4; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; min-height:100vh; font-family:system-ui,"Segoe UI",Roboto,sans-serif; color:var(--txt);
+    background:radial-gradient(120% 80% at 50% -10%, rgba(216,180,95,.10), transparent 55%), var(--ink);
+    display:flex; align-items:flex-start; justify-content:center; padding:40px 16px; }
+  .card{ width:100%; max-width:600px; background:var(--painel); border:1px solid var(--borda); border-radius:18px; padding:30px; box-shadow:0 30px 70px -30px #000; }
+  h1{ font-family:Georgia,"Times New Roman",serif; font-weight:500; font-size:1.5rem; margin:0 0 4px; }
+  h1 b{ color:var(--ouro); }
+  p.sub{ color:var(--suave); margin:0 0 22px; font-size:.92rem; }
+  label{ display:block; font-size:.82rem; color:var(--suave); margin:16px 0 6px; letter-spacing:.02em; }
+  input,textarea{ width:100%; padding:12px 14px; border-radius:11px; border:1px solid var(--borda); background:#0c1320; color:var(--txt); font:inherit; font-size:.96rem; }
+  input:focus,textarea:focus{ outline:none; border-color:var(--ouro); }
+  textarea{ min-height:110px; resize:vertical; line-height:1.5; }
+  .hint{ font-size:.74rem; color:var(--suave); margin-top:5px; }
+  .out{ margin-top:26px; padding-top:22px; border-top:1px solid var(--borda); }
+  .out h2{ font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ouro); margin:0 0 10px; }
+  .linkbox{ display:flex; gap:8px; } .linkbox input{ font-size:.82rem; }
+  .btn{ border:none; cursor:pointer; border-radius:11px; padding:12px 16px; font:inherit; font-weight:600; white-space:nowrap; transition:transform .2s, filter .2s; }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn.ouro{ background:linear-gradient(135deg,var(--ouro),var(--ouro2)); color:#1c1405; }
+  .btn.linha{ background:transparent; border:1px solid var(--borda); color:var(--txt); }
+  .btn.zap{ background:linear-gradient(135deg,#2bb673,#128c4f); color:#fff; width:100%; margin-top:14px; }
+  .row{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .ok{ color:#7ee0a0; font-size:.78rem; min-height:1em; margin-top:8px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Gerador de link — <b>Lumina</b></h1>
+  <p class="sub">Preencha os dados do dentista e copie o link personalizado + a mensagem pronta pro disparo.</p>
+
+  <label for="clinica">Nome da clínica</label>
+  <input id="clinica" placeholder="Ex.: Sorriso Real Odontologia" autocomplete="off" />
+
+  <label for="cidade">Cidade / UF</label>
+  <input id="cidade" placeholder="Ex.: São Paulo/SP" autocomplete="off" />
+
+  <label for="whats">WhatsApp do dentista (só números, com 55 + DDD)</label>
+  <input id="whats" placeholder="Ex.: 5511987654321" inputmode="numeric" autocomplete="off" />
+  <div class="hint">Esse número entra nos botões do site demonstrativo e é pra quem você vai mandar a mensagem.</div>
+
+  <label for="base">Link base do demo</label>
+  <input id="base" value="https://nathansantanaweb.github.io/lumina-odontologia/" autocomplete="off" />
+
+  <div class="out">
+    <h2>Link personalizado</h2>
+    <div class="linkbox">
+      <input id="link" readonly />
+      <button class="btn ouro" id="copiarLink">Copiar</button>
+    </div>
+    <div class="ok" id="okLink"></div>
+
+    <h2 style="margin-top:22px">Mensagem de disparo</h2>
+    <textarea id="msg"></textarea>
+    <div class="row">
+      <button class="btn linha" id="copiarMsg">Copiar mensagem</button>
+    </div>
+    <button class="btn zap" id="abrirZap">Abrir conversa no WhatsApp do dentista</button>
+    <div class="ok" id="okMsg"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  function clean(s){ return (s||"").replace(/[<>]/g,"").trim(); }
+
+  function gerar(){
+    var clinica = clean($("clinica").value);
+    var cidade  = clean($("cidade").value);
+    var whats   = ($("whats").value||"").replace(/\D/g,"");
+    var base    = $("base").value.trim().replace(/\?.*$/,"");
+
+    var params = [];
+    if (clinica) params.push("nome=" + encodeURIComponent(clinica));
+    if (cidade)  params.push("cidade=" + encodeURIComponent(cidade));
+    if (whats)   params.push("whats=" + whats);
+    var link = base + (params.length ? "?" + params.join("&") : "");
+    $("link").value = link;
+
+    var nomeMostra = clinica || "sua clínica";
+    var msg = "Olá! Tudo bem? Eu trabalho com criação de sites e montei uma demonstração pensada na " + nomeMostra + " 👇\n\n"
+            + link + "\n\n"
+            + "É só um exemplo — dá pra ajustar cores, textos e fotos. Se gostar, a gente conversa sem compromisso. Abraço!";
+    $("msg").value = msg;
+  }
+
+  function flash(el){ el.textContent = "Copiado!"; setTimeout(function(){ el.textContent=""; }, 1600); }
+  function copiar(texto, okEl){
+    if (navigator.clipboard) navigator.clipboard.writeText(texto).then(function(){ flash(okEl); });
+    else { var t=document.createElement("textarea"); t.value=texto; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); flash(okEl); }
+  }
+
+  ["clinica","cidade","whats","base"].forEach(function(id){ $(id).addEventListener("input", gerar); });
+  $("copiarLink").addEventListener("click", function(){ copiar($("link").value, $("okLink")); });
+  $("copiarMsg").addEventListener("click", function(){ copiar($("msg").value, $("okMsg")); });
+  $("abrirZap").addEventListener("click", function(){
+    var whats = ($("whats").value||"").replace(/\D/g,"");
+    if (!whats){ $("okMsg").textContent = "Preencha o WhatsApp do dentista."; return; }
+    window.open("https://wa.me/" + whats + "?text=" + encodeURIComponent($("msg").value), "_blank", "noopener");
+  });
+
+  gerar();
+})();
+</script>
+</body>
+</html>

@@ -65,7 +65,7 @@
 <!-- Navegação -->
 <header class="nav" id="nav">
   <div class="container nav__inner">
-    <a class="nav__brand" href="#top" aria-label="Lumina Odontologia">Lumin<b>a</b><span>Odontologia</span></a>
+    <a class="nav__brand" href="#top" aria-label="Lumina Odontologia" data-brand>Lumin<b>a</b><span>Odontologia</span></a>
     <nav class="nav__links" aria-label="Principal">
       <a href="#clinica">A Clínica</a>
       <a href="#tratamentos">Tratamentos</a>
@@ -344,7 +344,7 @@
         <div class="local__info" data-reveal data-delay="1">
           <span class="eyebrow">Onde estamos</span>
           <h3 style="margin-top:1rem">Fácil de chegar.</h3>
-          <p class="muted" style="margin-top:.6rem">TROQUE: Rua Exemplo, 000 — Sala 00<br>Bairro · Cidade/UF</p>
+          <p class="muted" style="margin-top:.6rem">TROQUE: Rua Exemplo, 000 — Sala 00<br>Bairro · <span data-city>Cidade/UF</span></p>
           <table class="hours">
             <tr><td>Segunda a Sexta</td><td>8h às 19h</td></tr>
             <tr><td>Sábado</td><td>8h às 13h</td></tr>
@@ -441,7 +441,7 @@
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
-        <a class="nav__brand" href="#top">Lumin<b>a</b><span>Odontologia</span></a>
+        <a class="nav__brand" href="#top" data-brand>Lumin<b>a</b><span>Odontologia</span></a>
         <p class="muted" style="max-width:34ch; font-size:.95rem; margin-top:1rem;">
           Estética e saúde bucal de alto padrão. Um sorriso que ilumina tudo à sua volta.
         </p>
@@ -450,7 +450,7 @@
         <h4>Visite</h4>
         <ul>
           <li>TROQUE: Rua Exemplo, 000 — Sala 00</li>
-          <li>TROQUE: Bairro · Cidade/UF</li>
+          <li>TROQUE: Bairro · <span data-city>Cidade/UF</span></li>
           <li>Seg a Sex · 8h às 19h</li>
         </ul>
       </div>
@@ -480,6 +480,7 @@
   </a>
 </div>
 
+<script src="assets/js/personalize.js" defer></script>
 <script src="assets/js/ui.js" defer></script>
 <script src="assets/js/sections.js" defer></script>
 <script src="assets/js/quiz.js" defer></script>
