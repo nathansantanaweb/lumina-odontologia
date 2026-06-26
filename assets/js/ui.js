@@ -55,20 +55,19 @@
     if (e.key === "Escape") setMenu(false);
   });
 
-  /* Reveal on scroll */
+  /* Reveal on scroll (com rede de segurança: nada fica preso escondido) */
   var revealEls = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
+  function revealAll() { revealEls.forEach(function (el) { el.classList.add("is-in"); }); }
   if (reduceMotion || !("IntersectionObserver" in window)) {
-    revealEls.forEach(function (el) { el.classList.add("is-in"); });
+    revealAll();
   } else {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-in");
-          io.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { entry.target.classList.add("is-in"); io.unobserve(entry.target); }
       });
-    }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
+    }, { threshold: 0.05, rootMargin: "0px 0px -6% 0px" });
     revealEls.forEach(function (el) { io.observe(el); });
+    window.addEventListener("load", function () { setTimeout(revealAll, 1800); });
   }
 
   /* Botões dourados magnéticos (desktop com ponteiro fino) */

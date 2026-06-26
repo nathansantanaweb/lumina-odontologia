@@ -45,7 +45,7 @@
   --leading-tight: 1.04;
 
   /* — Espaço & forma — */
-  --space-section: clamp(5rem, 4rem + 7vw, 9rem);
+  --space-section: clamp(3.25rem, 2.6rem + 3vw, 5.25rem);
   --radius:    14px;
   --radius-lg: 22px;
   --maxw:      1200px;

@@ -4,8 +4,8 @@
    ============================================================ */
 
 /* ---------- Primitivos compartilhados ---------- */
-.section-head{ max-width:62ch; margin-bottom:clamp(2.2rem,1.4rem+2.5vw,3.4rem); }
-.section-head .h2{ margin-block:1rem 1.1rem; }
+.section-head{ max-width:60ch; margin-bottom:clamp(1.75rem,1.3rem+1.6vw,2.6rem); }
+.section-head .h2{ margin-block:.7rem .85rem; }
 .section-head .lead{ max-width:56ch; }
 .section--center .section-head{ margin-inline:auto; text-align:center; }
 .section--center .eyebrow{ justify-content:center; }
