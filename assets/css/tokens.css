@@ -6,9 +6,9 @@
 :root{
   /* — Base (grafite-noite) — */
   --ink:        #0A0E16;   /* fundo base, quase preto azulado */
-  --ink-soft:   #0E141E;   /* estratos / painéis levemente elevados */
-  --ink-2:      #121A26;   /* cards / superfícies */
-  --ink-line:   #1B2230;   /* linhas e bordas sutis */
+  --ink-soft:   #111A27;   /* estratos / painéis levemente elevados */
+  --ink-2:      #16212F;   /* cards / superfícies */
+  --ink-line:   #283447;   /* linhas e bordas sutis (visíveis) */
 
   /* — Dourado (champagne → ouro-velho) — */
   --gold:       #D8B45F;   /* dourado de marca */

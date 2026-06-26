@@ -27,7 +27,8 @@ import * as THREE from "three";
 
   function fallback() { canvas.style.display = "none"; document.documentElement.classList.remove("has-3d"); }
 
-  var enable = hasWebGL() && !reduce && !weak;
+  // 3D só no desktop: no mobile fica a versão estática premium (mais limpa, rápida e "cara de clínica")
+  var enable = hasWebGL() && !reduce && !weak && !coarse;
   document.documentElement.classList.toggle("has-3d", enable);
   if (!enable) { fallback(); return; }
 

@@ -22,6 +22,7 @@
   position:relative; padding:clamp(1.4rem,1rem+1.4vw,2rem);
   background:linear-gradient(160deg, var(--ink-soft), var(--ink-2));
   border:1px solid var(--ink-line); border-radius:var(--radius-lg);
+  box-shadow:0 12px 30px -22px rgba(0,0,0,.8);
   transition:transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease),
              box-shadow var(--dur) var(--ease-out);
 }
@@ -111,11 +112,12 @@
 .review__who b{ display:block; font-weight:500; font-size:.92rem; } .review__who span{ color:var(--mist-dim); font-size:.78rem; }
 
 /* ---------- Equipe ---------- */
-.member__photo{ aspect-ratio:1; border-radius:var(--radius); margin-bottom:1rem; display:grid; place-items:center; color:var(--gold-2); background:linear-gradient(150deg,#16202f,#0d1420); border:1px solid var(--ink-line); }
-.member__photo .ico{ font-size:46px; }
+.member{ text-align:center; }
+.member__photo{ width:108px; height:108px; border-radius:50%; margin:0 auto 1.1rem; display:grid; place-items:center; color:var(--gold-2); background:radial-gradient(120% 120% at 35% 25%, #1c2940, #0d1420); border:1px solid var(--glass-line); }
+.member__photo .ico{ font-size:40px; }
 .member h3{ font-size:1.3rem; }
-.member__role{ color:var(--gold-1); font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; margin-top:.2rem; }
-.member__spec{ color:var(--mist); font-size:.9rem; margin-top:.5rem; }
+.member__role{ color:var(--gold-1); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; margin-top:.3rem; }
+.member__spec{ color:var(--mist); font-size:.9rem; margin-top:.55rem; }
 
 /* ---------- Conteúdo / Artigos ---------- */
 .article{ display:flex; flex-direction:column; overflow:hidden; padding:0; }
@@ -178,8 +180,13 @@
 @media (max-width:560px){
   .grid--2, .grid--3, .grid--4{ grid-template-columns:1fr; }
   .gallery{ grid-template-columns:1fr; }
-  .shot--wide{ grid-column:span 1; }
-  .stats{ grid-template-columns:repeat(2,1fr); gap:1rem; }
+  .shot{ aspect-ratio:16/10; }
+  .shot--wide{ grid-column:span 1; aspect-ratio:16/10; }
+  .article__cover{ aspect-ratio:16/9; }
+  .map{ min-height:230px; }
+  .stats{ grid-template-columns:repeat(2,1fr); gap:.8rem; }
+  .stat{ padding:1.1rem 1rem; }
   .field--row{ grid-template-columns:1fr; }
+  .reviews__head{ gap:.8rem 1rem; }
   .reviews__score b{ font-size:2.1rem; }
 }
