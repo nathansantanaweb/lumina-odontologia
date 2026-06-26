@@ -17,24 +17,25 @@
 .grid--3{ grid-template-columns:repeat(3,1fr); }
 .grid--4{ grid-template-columns:repeat(4,1fr); }
 
-/* Card base (vidro com fio dourado) */
+/* Card base (vidro com fio dourado) — flex column, compacto */
 .card{
-  position:relative; padding:clamp(1.4rem,1rem+1.4vw,2rem);
-  background:linear-gradient(160deg, var(--ink-soft), var(--ink-2));
-  border:1px solid var(--ink-line); border-radius:var(--radius-lg);
-  box-shadow:0 12px 30px -22px rgba(0,0,0,.8);
+  position:relative; display:flex; flex-direction:column; align-items:flex-start;
+  padding:clamp(1.3rem,1.05rem+.9vw,1.7rem);
+  background:#172331;
+  border:1px solid #2c3a4e; border-radius:var(--radius-lg);
+  box-shadow:0 16px 34px -24px rgba(0,0,0,.9);
   transition:transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease),
              box-shadow var(--dur) var(--ease-out);
 }
-.card:hover{ transform:translateY(-5px); border-color:var(--glass-line); box-shadow:var(--shadow-soft); }
+.card:hover{ transform:translateY(-4px); border-color:var(--glass-line); box-shadow:var(--shadow-soft); }
 .card__ico{
-  display:grid; place-items:center; width:52px; height:52px; margin-bottom:1.1rem;
-  border-radius:13px; color:var(--gold-1); font-size:26px;
+  display:grid; place-items:center; width:46px; height:46px; margin-bottom:.85rem; flex:none;
+  border-radius:12px; color:var(--gold-1); font-size:23px;
   background:radial-gradient(120% 120% at 30% 20%, rgba(235,208,138,.16), rgba(184,146,63,.05));
   border:1px solid var(--glass-line);
 }
-.card h3{ font-family:var(--font-display); font-size:var(--fs-h3); font-weight:600; margin-bottom:.5rem; color:var(--ivory); }
-.card p{ color:var(--mist); font-size:.97rem; line-height:1.6; }
+.card h3{ font-family:var(--font-display); font-size:var(--fs-h3); font-weight:600; line-height:1.15; margin:0 0 .4rem; color:var(--ivory); }
+.card p{ color:var(--mist); font-size:.95rem; line-height:1.58; margin:0; }
 .card__tag{ position:absolute; top:1.1rem; right:1.2rem; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-2); }
 
 /* ---------- A Clínica + Stats ---------- */
@@ -46,11 +47,10 @@
 .stat__label{ display:block; margin-top:.5rem; color:var(--mist); font-size:.86rem; }
 
 /* ---------- Tratamentos ---------- */
-.treat{ cursor:default; }
-.treat__num{ font-family:var(--font-display); font-size:1rem; color:var(--gold-2); letter-spacing:.05em; }
-.treat h3{ margin-top:.3rem; }
-.treat__link{ display:inline-flex; align-items:center; gap:.45em; margin-top:1rem; color:var(--gold-1); font-size:.86rem; font-weight:500; opacity:0; transform:translateY(4px); transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease-out); }
+.treat__num{ display:none; }
+.treat__link{ display:inline-flex; align-items:center; gap:.45em; margin-top:.9rem; color:var(--gold-1); font-size:.86rem; font-weight:500; opacity:0; transform:translateY(4px); transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease-out); }
 .treat:hover .treat__link{ opacity:1; transform:none; }
+@media (hover:none){ .treat__link{ opacity:1; transform:none; } }
 
 /* ---------- Quiz ---------- */
 .quiz{
