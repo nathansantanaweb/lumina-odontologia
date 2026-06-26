@@ -92,27 +92,54 @@ import * as THREE from "three";
   var endLight = new THREE.PointLight(0xffd9a0, 160, 170, 2);
   endLight.position.set(0, 3, -132); scene.add(endLight);
 
-  /* Estado de scroll / mouse */
-  var Z_START = 22, Z_END = -138;
-  var targetProg = 0, curZ = Z_START, camX = 0, camY = 1.5, mx = 0, my = 0;
+  /* Estado de câmera + BEATS (cada seção ancora uma profundidade no corredor) */
+  var curZ = 22, targetZ = 22, camX = 0, camY = 1.5, mx = 0, my = 0;
 
+  var BEATS = [["#hero", 22], ["#clinica", 6], ["#diferenciais", -10], ["#tratamentos", -26],
+    ["#quiz-sec", -40], ["#tecnologia", -52], ["#ambiente", -64], ["#resultados", -82],
+    ["#avaliacoes", -96], ["#equipe", -106], ["#conteudo", -114], ["#localizacao", -122],
+    ["#agendar", -130], ["#cta", -138]]
+    .map(function (b) { return { el: document.querySelector(b[0]), z: b[1] }; })
+    .filter(function (b) { return b.el; });
+
+  var beatPos = [];
+  function computeBeats() {
+    var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    beatPos = BEATS.map(function (b) {
+      var top = b.el.getBoundingClientRect().top + window.scrollY;
+      var center = top + b.el.offsetHeight / 2 - window.innerHeight / 2;
+      return Math.min(maxScroll, Math.max(0, center));
+    });
+  }
+  function smoothstep(t) { return t * t * (3 - 2 * t); }
   function onScroll() {
-    var docH = document.documentElement.scrollHeight - window.innerHeight;
-    targetProg = docH > 0 ? Math.min(1, Math.max(0, window.scrollY / docH)) : 0;
+    if (!beatPos.length) return;
+    var y = window.scrollY, last = beatPos.length - 1;
+    if (y <= beatPos[0]) { targetZ = BEATS[0].z; return; }
+    if (y >= beatPos[last]) { targetZ = BEATS[last].z; return; }
+    for (var i = 0; i < last; i++) {
+      if (y <= beatPos[i + 1]) {
+        var span = beatPos[i + 1] - beatPos[i];
+        var t = span > 0 ? (y - beatPos[i]) / span : 0;
+        targetZ = BEATS[i].z + (BEATS[i + 1].z - BEATS[i].z) * smoothstep(t);
+        return;
+      }
+    }
   }
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("load", function () { computeBeats(); onScroll(); });
   if (P.parallax) {
     window.addEventListener("pointermove", function (e) {
       mx = (e.clientX / window.innerWidth) * 2 - 1;
       my = (e.clientY / window.innerHeight) * 2 - 1;
     }, { passive: true });
   }
-  onScroll();
 
   function resize() {
     var w = window.innerWidth, h = window.innerHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h; camera.updateProjectionMatrix();
+    computeBeats(); onScroll();
   }
   window.addEventListener("resize", resize);
   resize();
@@ -139,8 +166,7 @@ import * as THREE from "three";
     if (!running) return;
     requestAnimationFrame(loop);
     var now = performance.now();
-    var tz = Z_START + (Z_END - Z_START) * targetProg;
-    curZ += (tz - curZ) * 0.06;
+    curZ += (targetZ - curZ) * 0.06;
     camX += (mx * 1.7 - camX) * 0.04;
     camY += (1.5 - my * 0.55 - camY) * 0.04;
     camera.position.set(camX, camY, curZ);
