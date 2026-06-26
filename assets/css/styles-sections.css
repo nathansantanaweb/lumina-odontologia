@@ -40,8 +40,8 @@
 .clinica__grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(2rem,1rem+4vw,4.5rem); align-items:center; }
 .stats{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.6rem; }
 .stat{ padding:1.4rem 1.2rem; border:1px solid var(--ink-line); border-radius:var(--radius); background:var(--ink-soft); }
-.stat__num{ font-family:var(--font-display); font-size:clamp(2.2rem,1.6rem+2vw,3.2rem); font-weight:600; line-height:1; background:var(--gold-grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
-.stat__num small{ -webkit-text-fill-color:var(--gold-2); font-size:.5em; }
+.stat__num{ font-family:var(--font-display); font-size:clamp(2.2rem,1.6rem+2vw,3.2rem); font-weight:600; line-height:1; color:var(--gold-1); }
+.stat__num small{ color:var(--gold-2); font-size:.5em; }
 .stat__label{ display:block; margin-top:.5rem; color:var(--mist); font-size:.86rem; }
 
 /* ---------- Tratamentos ---------- */

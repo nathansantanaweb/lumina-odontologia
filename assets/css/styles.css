@@ -32,7 +32,14 @@ ul{ list-style:none; }
 .has-3d .hero__glow{ display:none; }
 .has-3d .h-display,
 .has-3d .h2,
-.has-3d .lead{ text-shadow:0 2px 30px rgba(0,0,0,.55); }
+.has-3d .h3,
+.has-3d .eyebrow,
+.has-3d .lead{ text-shadow:0 2px 30px rgba(0,0,0,.6); }
+/* scrim suave atrás do conteúdo do hero, pra a headline destacar da cena */
+.has-3d .hero::after{
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:radial-gradient(85% 60% at 30% 74%, rgba(10,14,22,.6), transparent 72%);
+}
 
 /* ---------- Atmosfera cinematográfica (fixa, atrás do canvas) ---------- */
 .atmosphere{
@@ -70,15 +77,15 @@ ul{ list-style:none; }
 .h-display{
   font-family:var(--font-display); font-weight:500;
   font-size:var(--fs-display); line-height:var(--leading-tight);
-  letter-spacing:-.01em; color:var(--ivory); overflow-wrap:break-word;
+  letter-spacing:-.01em; color:var(--ivory); overflow-wrap:break-word; text-wrap:balance;
 }
 .h2{
   font-family:var(--font-display); font-weight:500;
   font-size:var(--fs-h2); line-height:1.08; letter-spacing:-.01em; color:var(--ivory);
-  overflow-wrap:break-word;
+  overflow-wrap:break-word; text-wrap:balance;
 }
-.h3{ font-family:var(--font-display); font-weight:600; font-size:var(--fs-h3); line-height:1.15; }
-.lead{ font-size:var(--fs-lead); color:var(--mist); line-height:1.6; font-weight:300; }
+.h3{ font-family:var(--font-display); font-weight:600; font-size:var(--fs-h3); line-height:1.15; text-wrap:balance; }
+.lead{ font-size:var(--fs-lead); color:var(--mist); line-height:1.6; font-weight:300; text-wrap:pretty; max-width:68ch; }
 .muted{ color:var(--mist); }
 .gold-word{ font-style:italic; color:var(--gold-1); }
 
