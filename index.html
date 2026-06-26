@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lumina Odontologia — Estética & saúde bucal de alto padrão</title>
+<meta name="description" content="Clínica de odontologia premium: tecnologia de ponta, conforto absoluto e resultados que transformam o seu sorriso. Agende sua avaliação." />
+<meta name="robots" content="noindex" /><!-- demo: não indexar -->
+<meta name="theme-color" content="#0A0E16" />
+<meta name="referrer" content="no-referrer" />
+
+<meta property="og:title" content="Lumina Odontologia — Alto padrão" />
+<meta property="og:description" content="Uma experiência de odontologia pensada nos mínimos detalhes, da recepção ao resultado." />
+<meta property="og:type" content="website" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230A0E16'/%3E%3Ctext x='32' y='34' text-anchor='middle' dominant-baseline='central' font-family='Georgia,serif' font-size='38' fill='%23EBD08A'%3EL%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="assets/css/tokens.css" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="stylesheet" href="assets/css/styles-sections.css" />
+
+<script type="importmap">
+{ "imports": { "three": "./assets/vendor/three.module.min.js" } }
+</script>
+</head>
+<body>
+<a class="skip" href="#clinica">Pular para o conteúdo</a>
+
+<!-- Sprite de ícones -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-person" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c0-3.3 3-6 7-6s7 2.7 7 6"/></symbol>
+  <symbol id="ic-spark" viewBox="0 0 24 24"><path d="M12 3l1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7z"/></symbol>
+  <symbol id="ic-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="ic-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 10h.01M15.5 10h.01M8 14.5s1.6 2 4 2 4-2 4-2"/></symbol>
+  <symbol id="ic-gem" viewBox="0 0 24 24"><path d="M6 4h12l3 5-9 11L3 9z"/><path d="M3 9h18M9 4l-3 5 6 11 6-11-3-5"/></symbol>
+  <symbol id="ic-braces" viewBox="0 0 24 24"><path d="M5 8h14M5 16h14M8 8v8M12 8v8M16 8v8"/></symbol>
+  <symbol id="ic-implant" viewBox="0 0 24 24"><path d="M12 3v18M8.5 8h7M9 12h6M9.5 16h5"/></symbol>
+  <symbol id="ic-tooth" viewBox="0 0 24 24"><path d="M7 3.5C5 3.5 4 5 4 7.4c0 2.8 1 4.8 1.5 7.6.4 2.3.5 4.5 1.6 4.5 1 0 1.1-2 1.5-4 .2-1.2 1.6-1.2 1.8 0 .4 2 .5 4 1.5 4 1.1 0 1.2-2.2 1.6-4.5.5-2.8 1.5-4.8 1.5-7.6C17 5 16 3.5 14 3.5c-1.6 0-2 1-3 1s-1.4-1-3-1z"/></symbol>
+  <symbol id="ic-face" viewBox="0 0 24 24"><path d="M12 21c4 0 7-3.5 7-9s-3-9-7-9-7 3.5-7 9 3 9 7 9z"/><path d="M9 10h.01M15 10h.01M10 15h4"/></symbol>
+  <symbol id="ic-scan" viewBox="0 0 24 24"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M4 12h16"/></symbol>
+  <symbol id="ic-xray" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7v10M12 7v10M15 7v10"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="ic-play" viewBox="0 0 24 24"><path d="M9 6.5l9 5.5-9 5.5z"/></symbol>
+</svg>
+
+<!-- Cena 3D (corredor de luz) — degrada p/ a versão estática -->
+<canvas id="scene" class="scene" aria-hidden="true"></canvas>
+
+<!-- Atmosfera cinematográfica -->
+<div class="atmosphere" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Fio de luz (assinatura + progresso) -->
+<div class="thread" aria-hidden="true">
+  <div class="thread__fill"></div>
+  <div class="thread__node"></div>
+</div>
+
+<!-- Navegação -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a class="nav__brand" href="#top" aria-label="Lumina Odontologia">Lumin<b>a</b><span>Odontologia</span></a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#clinica">A Clínica</a>
+      <a href="#tratamentos">Tratamentos</a>
+      <a href="#tecnologia">Tecnologia</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--gold" href="#agendar" data-wa-soft>Agendar avaliação</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Menu mobile -->
+<nav class="nav__mobile" id="navMobile" aria-label="Menu">
+  <a href="#clinica"><small>01</small>A Clínica</a>
+  <a href="#tratamentos"><small>02</small>Tratamentos</a>
+  <a href="#tecnologia"><small>03</small>Tecnologia</a>
+  <a href="#avaliacoes"><small>04</small>Avaliações</a>
+  <a href="#agendar"><small>05</small>Agendar</a>
+</nav>
+
+<main id="top">
+
+  <!-- ESTÁGIO 1 — A fachada -->
+  <section class="hero" id="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <span class="eyebrow" data-reveal>Odontologia de alto padrão</span>
+      <h1 class="h-display hero__title" data-reveal data-delay="1">
+        <span class="line">Seu melhor sorriso</span>
+        <span class="line">começa <i class="gold-word">aqui dentro.</i></span>
+      </h1>
+      <p class="lead hero__lead" data-reveal data-delay="2">
+        Da recepção ao resultado, uma experiência pensada nos mínimos detalhes —
+        tecnologia de ponta, conforto absoluto e um cuidado que você sente no primeiro minuto.
+      </p>
+      <div class="hero__cta" data-reveal data-delay="3">
+        <a class="btn btn--gold" href="#agendar">
+          Agende sua avaliação
+          <svg class="btn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="#clinica">Conheça a clínica</a>
+      </div>
+    </div>
+    <div class="hero__scrollcue" aria-hidden="true"><i></i> Role para entrar</div>
+  </section>
+
+  <!-- ESTÁGIO 2 — Atravessar as portas: A Clínica -->
+  <section class="section" id="clinica">
+    <div class="container">
+      <div class="clinica__grid">
+        <div>
+          <span class="eyebrow" data-reveal>A Clínica</span>
+          <h2 class="h2" data-reveal data-delay="1" style="margin-block:1rem 1.3rem; max-width:16ch;">Um espaço feito para o seu <i class="gold-word">conforto</i>.</h2>
+          <p class="lead" data-reveal data-delay="2" style="max-width:50ch;">
+            TROQUE: apresente a clínica em tom acolhedor e sóbrio — anos de cuidado, atendimento
+            humano e um ambiente pensado para que você se sinta tranquilo do primeiro contato ao resultado.
+          </p>
+        </div>
+        <div class="stats" data-reveal data-delay="2">
+          <div class="stat"><span class="stat__num" data-count="15" data-suffix="+">0</span><span class="stat__label">Anos de cuidado · TROQUE</span></div>
+          <div class="stat"><span class="stat__num" data-count="12000" data-suffix="+">0</span><span class="stat__label">Sorrisos transformados</span></div>
+          <div class="stat"><span class="stat__num" data-count="4.9" data-decimals="1">0</span><span class="stat__label">Avaliação no Google</span></div>
+          <div class="stat"><span class="stat__num" data-count="8">0</span><span class="stat__label">Especialistas</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diferenciais -->
+  <section class="section section--tight" id="diferenciais">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Por que a Lumina</span>
+        <h2 class="h2">Cuidado de verdade, em cada detalhe.</h2>
+      </div>
+      <div class="grid grid--4">
+        <article class="card" data-reveal><span class="card__ico"><svg class="ico"><use href="#ic-person"/></svg></span><h3>Atendimento que acolhe</h3><p>Você é recebido pelo nome, ouvido com calma e cuidado por uma equipe que se importa de verdade.</p></article>
+        <article class="card" data-reveal data-delay="1"><span class="card__ico"><svg class="ico"><use href="#ic-spark"/></svg></span><h3>Tecnologia de ponta</h3><p>Equipamentos de última geração para diagnósticos precisos e tratamentos mais rápidos e confortáveis.</p></article>
+        <article class="card" data-reveal data-delay="2"><span class="card__ico"><svg class="ico"><use href="#ic-shield"/></svg></span><h3>Biossegurança rigorosa</h3><p>Protocolos de esterilização que seguem o mais alto padrão, para a sua total tranquilidade.</p></article>
+        <article class="card" data-reveal data-delay="3"><span class="card__ico"><svg class="ico"><use href="#ic-smile"/></svg></span><h3>Resultados naturais</h3><p>Sorrisos que parecem seus — só que com a saúde e a harmonia que você sempre quis.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTÁGIO 3 — As salas: Tratamentos -->
+  <section class="section" id="tratamentos">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Tratamentos</span>
+        <h2 class="h2">Tudo para o seu sorriso, num só lugar.</h2>
+        <p class="lead">TROQUE os tratamentos conforme a especialidade da clínica.</p>
+      </div>
+      <div class="grid grid--3">
+        <article class="card treat" data-reveal><span class="card__ico"><svg class="ico"><use href="#ic-implant"/></svg></span><span class="treat__num">01</span><h3>Implantes</h3><p>Dentes fixos, firmes e naturais para você voltar a sorrir e mastigar com segurança.</p><a class="treat__link" href="#agendar">Saber mais →</a></article>
+        <article class="card treat" data-reveal data-delay="1"><span class="card__ico"><svg class="ico"><use href="#ic-gem"/></svg></span><span class="treat__num">02</span><h3>Lentes de contato dental</h3><p>Lâminas ultrafinas que desenham um sorriso de cinema, preservando o seu dente.</p><a class="treat__link" href="#agendar">Saber mais →</a></article>
+        <article class="card treat" data-reveal data-delay="2"><span class="card__ico"><svg class="ico"><use href="#ic-spark"/></svg></span><span class="treat__num">03</span><h3>Clareamento</h3><p>Dentes visivelmente mais brancos com técnicas seguras e sem sensibilidade.</p><a class="treat__link" href="#agendar">Saber mais →</a></article>
+        <article class="card treat" data-reveal><span class="card__ico"><svg class="ico"><use href="#ic-braces"/></svg></span><span class="treat__num">04</span><h3>Ortodontia &amp; Alinhadores</h3><p>Alinhe os dentes com aparelhos discretos ou alinhadores transparentes.</p><a class="treat__link" href="#agendar">Saber mais →</a></article>
+        <article class="card treat" data-reveal data-delay="1"><span class="card__ico"><svg class="ico"><use href="#ic-face"/></svg></span><span class="treat__num">05</span><h3>Harmonização orofacial</h3><p>Equilíbrio e beleza para o rosto, realçando a sua expressão natural.</p><a class="treat__link" href="#agendar">Saber mais →</a></article>
+        <article class="card treat" data-reveal data-delay="2"><span class="card__ico"><svg class="ico"><use href="#ic-tooth"/></svg></span><span class="treat__num">06</span><h3>Próteses &amp; Reabilitação</h3><p>Devolvemos função e estética com próteses sob medida, confortáveis e duradouras.</p><a class="treat__link" href="#agendar">Saber mais →</a></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section class="section section--center" id="quiz-sec">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow eyebrow--center">Descubra</span>
+        <h2 class="h2">Qual tratamento é pra você?</h2>
+      </div>
+      <div class="quiz" id="quiz" data-reveal>
+        <div class="quiz__bar"><i id="quizBar"></i></div>
+
+        <div class="quiz__step is-active" data-step="1">
+          <h3 class="quiz__q">O que mais te incomoda hoje?</h3>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-treat="Clareamento"><b>Dentes amarelados</b></button>
+            <button class="quiz__opt" data-treat="Ortodontia / Alinhadores"><b>Dentes tortos ou desalinhados</b></button>
+            <button class="quiz__opt" data-treat="Implantes"><b>Falta de um ou mais dentes</b></button>
+            <button class="quiz__opt" data-treat="Lentes de contato dental"><b>Quero um sorriso de cinema</b></button>
+            <button class="quiz__opt" data-treat="uma avaliação clínica"><b>Dor, sensibilidade ou outro</b></button>
+          </div>
+        </div>
+
+        <div class="quiz__step" data-step="2">
+          <h3 class="quiz__q">Há quanto tempo você pensa nisso?</h3>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-next><b>É algo recente</b></button>
+            <button class="quiz__opt" data-next><b>Já faz um tempo</b></button>
+            <button class="quiz__opt" data-next><b>Já passou da hora</b></button>
+          </div>
+          <div class="quiz__nav"><button class="quiz__back" data-back>← Voltar</button></div>
+        </div>
+
+        <div class="quiz__step" data-step="3">
+          <h3 class="quiz__q">Qual período você prefere?</h3>
+          <div class="quiz__opts">
+            <button class="quiz__opt" data-period="manhã"><b>Manhã</b></button>
+            <button class="quiz__opt" data-period="tarde"><b>Tarde</b></button>
+            <button class="quiz__opt" data-period="noite"><b>Noite</b></button>
+          </div>
+          <div class="quiz__nav"><button class="quiz__back" data-back>← Voltar</button></div>
+        </div>
+
+        <div class="quiz__step quiz__result" data-step="4">
+          <span class="pill">Nossa recomendação</span>
+          <h3 id="quizResultTitle">—</h3>
+          <p class="muted" style="max-width:42ch;margin:0 auto 1.4rem">Combina com o que você procura. Vamos conversar e montar o melhor plano pra você?</p>
+          <a class="btn btn--gold" id="quizWa" href="#" target="_blank" rel="noopener">Falar no WhatsApp
+            <svg class="btn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <div class="quiz__nav" style="justify-content:center;margin-top:1.2rem"><button class="quiz__back" data-restart>↻ Refazer</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tecnologia -->
+  <section class="section" id="tecnologia">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Tecnologia</span>
+        <h2 class="h2">Precisão que você sente — e vê.</h2>
+      </div>
+      <div class="grid grid--4">
+        <article class="card" data-reveal><span class="card__ico"><svg class="ico"><use href="#ic-scan"/></svg></span><h3>Scanner intraoral</h3><p>Moldes digitais sem aquela massa desconfortável. Mais conforto e precisão.</p></article>
+        <article class="card" data-reveal data-delay="1"><span class="card__ico"><svg class="ico"><use href="#ic-smile"/></svg></span><h3>Digital Smile Design</h3><p>Você vê o seu novo sorriso projetado antes mesmo de começar o tratamento.</p></article>
+        <article class="card" data-reveal data-delay="2"><span class="card__ico"><svg class="ico"><use href="#ic-xray"/></svg></span><h3>Raio-X digital</h3><p>Diagnóstico imediato com baixíssima radiação e máxima nitidez.</p></article>
+        <article class="card" data-reveal data-delay="3"><span class="card__ico"><svg class="ico"><use href="#ic-shield"/></svg></span><h3>Esterilização rigorosa</h3><p>Central de esterilização com rastreabilidade — segurança em cada instrumento.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTÁGIO 4 — O ambiente -->
+  <section class="section" id="ambiente">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Estrutura &amp; Ambiente</span>
+        <h2 class="h2">Um lugar que acolhe antes de cuidar.</h2>
+        <p class="lead">TROQUE pelas fotos reais da clínica (recepção, salas, detalhes).</p>
+      </div>
+      <div class="gallery" data-reveal>
+        <div class="shot shot--wide tour" id="tour">
+          <div class="shot__ph"><svg class="ico"><use href="#ic-tooth"/></svg> TROQUE: foto da recepção</div>
+          <div class="tour__play"><b><svg class="ico" style="font-size:26px"><use href="#ic-play"/></svg></b></div>
+        </div>
+        <div class="shot"><div class="shot__ph"><svg class="ico"><use href="#ic-spark"/></svg> TROQUE: sala</div></div>
+        <div class="shot"><div class="shot__ph"><svg class="ico"><use href="#ic-smile"/></svg> TROQUE: detalhe</div></div>
+        <div class="shot shot--wide"><div class="shot__ph"><svg class="ico"><use href="#ic-person"/></svg> TROQUE: equipe / espera</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTÁGIO 5 — O resultado: Antes & Depois -->
+  <section class="section section--center" id="resultados">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow eyebrow--center">O resultado</span>
+        <h2 class="h2">Antes &amp; depois</h2>
+        <p class="lead">Arraste para comparar. TROQUE pelas fotos reais (com consentimento do paciente).</p>
+      </div>
+      <div class="ba" data-reveal>
+        <div class="ba__stage">
+          <div class="ba__img ba__after">Depois<span class="ba__label ba__label--a">Depois</span></div>
+          <div class="ba__img ba__before" id="baBefore">Antes<span class="ba__label ba__label--b">Antes</span></div>
+          <div class="ba__handle" id="baHandle"><div class="ba__grip"><svg class="ico" style="font-size:18px" viewBox="0 0 24 24"><path d="M8 9l-3 3 3 3M16 9l3 3-3 3"/></svg></div></div>
+          <input type="range" class="ba__range" id="baRange" min="0" max="100" value="50" aria-label="Comparar antes e depois" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avaliações Google -->
+  <section class="section" id="avaliacoes">
+    <div class="container">
+      <div class="reviews__head" data-reveal>
+        <div class="reviews__score"><b>4,9</b><div><div class="stars">★★★★★</div><span class="muted" style="font-size:.85rem">no Google · TROQUE</span></div></div>
+        <a class="btn btn--ghost" href="#" target="_blank" rel="noopener" style="margin-left:auto">Ver no Google</a>
+      </div>
+      <div class="grid grid--3">
+        <article class="card review" data-reveal><div class="stars">★★★★★</div><p>“TROQUE pelo depoimento real. Atendimento impecável, do começo ao fim. Saí encantada com o resultado.”</p><div class="review__who"><span class="avatar">A</span><div><b>Ana TROQUE</b><span>há 2 semanas</span></div></div></article>
+        <article class="card review" data-reveal data-delay="1"><div class="stars">★★★★★</div><p>“TROQUE: clínica linda, equipe atenciosa e muito profissional. Recomendo de olhos fechados.”</p><div class="review__who"><span class="avatar">R</span><div><b>Rafael TROQUE</b><span>há 1 mês</span></div></div></article>
+        <article class="card review" data-reveal data-delay="2"><div class="stars">★★★★★</div><p>“TROQUE: tinha medo de dentista e aqui me senti em casa. Resultado natural e perfeito.”</p><div class="review__who"><span class="avatar">J</span><div><b>Juliana TROQUE</b><span>há 1 mês</span></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipe -->
+  <section class="section" id="equipe">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Quem cuida de você</span>
+        <h2 class="h2">Especialistas que amam o que fazem.</h2>
+        <p class="lead">Fotos, nomes e formações entram após o contrato (dados pessoais reais).</p>
+      </div>
+      <div class="grid grid--3">
+        <article class="card member" data-reveal><div class="member__photo"><svg class="ico"><use href="#ic-person"/></svg></div><h3>Dr(a). TROQUE</h3><div class="member__role">Implantodontia</div><p class="member__spec">TROQUE: especialidade e uma linha de apresentação.</p></article>
+        <article class="card member" data-reveal data-delay="1"><div class="member__photo"><svg class="ico"><use href="#ic-person"/></svg></div><h3>Dr(a). TROQUE</h3><div class="member__role">Ortodontia</div><p class="member__spec">TROQUE: especialidade e uma linha de apresentação.</p></article>
+        <article class="card member" data-reveal data-delay="2"><div class="member__photo"><svg class="ico"><use href="#ic-person"/></svg></div><h3>Dr(a). TROQUE</h3><div class="member__role">Estética dental</div><p class="member__spec">TROQUE: especialidade e uma linha de apresentação.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conteúdo / Artigos -->
+  <section class="section" id="conteudo">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Conteúdo</span>
+        <h2 class="h2">Para você cuidar melhor do seu sorriso.</h2>
+      </div>
+      <div class="grid grid--3">
+        <article class="card article" data-reveal><div class="article__cover"><svg class="ico" style="font-size:40px"><use href="#ic-gem"/></svg></div><div class="article__body"><span class="article__cat">Estética</span><h3>Lentes de contato dental valem a pena?</h3><a class="article__link" href="artigos/exemplo.html">Ler artigo →</a></div></article>
+        <article class="card article" data-reveal data-delay="1"><div class="article__cover"><svg class="ico" style="font-size:40px"><use href="#ic-implant"/></svg></div><div class="article__body"><span class="article__cat">Implantes</span><h3>Como funciona o implante dentário, passo a passo</h3><a class="article__link" href="artigos/exemplo.html">Ler artigo →</a></div></article>
+        <article class="card article" data-reveal data-delay="2"><div class="article__cover"><svg class="ico" style="font-size:40px"><use href="#ic-spark"/></svg></div><div class="article__body"><span class="article__cat">Cuidados</span><h3>Clareamento: o que é mito e o que é verdade</h3><a class="article__link" href="artigos/exemplo.html">Ler artigo →</a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Localização -->
+  <section class="section" id="localizacao">
+    <div class="container">
+      <div class="local__grid">
+        <div class="map" data-reveal aria-label="Mapa ilustrativo">
+          <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" role="img">
+            <rect width="400" height="320" fill="#0c1320"/>
+            <g stroke="#1b2230" stroke-width="2">
+              <path d="M0 80h400M0 170h400M0 250h400M70 0v320M180 0v320M300 0v320"/>
+            </g>
+            <path d="M180 0v170h220" stroke="#2a3654" stroke-width="6" fill="none"/>
+            <circle cx="180" cy="170" r="10" fill="#EBD08A"/>
+            <circle cx="180" cy="170" r="20" fill="none" stroke="#EBD08A" stroke-opacity=".5" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="local__info" data-reveal data-delay="1">
+          <span class="eyebrow">Onde estamos</span>
+          <h3 style="margin-top:1rem">Fácil de chegar.</h3>
+          <p class="muted" style="margin-top:.6rem">TROQUE: Rua Exemplo, 000 — Sala 00<br>Bairro · Cidade/UF</p>
+          <table class="hours">
+            <tr><td>Segunda a Sexta</td><td>8h às 19h</td></tr>
+            <tr><td>Sábado</td><td>8h às 13h</td></tr>
+            <tr><td>Domingo</td><td>Fechado</td></tr>
+          </table>
+          <div class="local__cta">
+            <a class="btn btn--gold" href="#" target="_blank" rel="noopener"><svg class="btn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><use href="#ic-pin"/></svg> Como chegar</a>
+            <a class="btn btn--ghost" href="tel:+5511999999999">Ligar agora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTÁGIO 6 — A decisão: Agendamento -->
+  <section class="section section--center" id="agendar">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow eyebrow--center">Agende</span>
+        <h2 class="h2">Vamos cuidar do seu sorriso?</h2>
+        <p class="lead">Preencha e a gente continua a conversa no WhatsApp — rápido e sem compromisso.</p>
+      </div>
+      <form class="book" id="bookForm" data-reveal novalidate>
+        <div class="field">
+          <label for="f-nome">Seu nome</label>
+          <input id="f-nome" name="nome" type="text" placeholder="Como podemos te chamar?" autocomplete="name" required />
+        </div>
+        <div class="field--row">
+          <div class="field">
+            <label for="f-trat">Tratamento de interesse</label>
+            <select id="f-trat" name="tratamento">
+              <option value="">Ainda não sei</option>
+              <option>Implantes</option>
+              <option>Lentes de contato dental</option>
+              <option>Clareamento</option>
+              <option>Ortodontia / Alinhadores</option>
+              <option>Harmonização orofacial</option>
+              <option>Próteses / Reabilitação</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-hora">Melhor período</label>
+            <select id="f-hora" name="horario">
+              <option value="">Tanto faz</option>
+              <option value="manhã">Manhã</option>
+              <option value="tarde">Tarde</option>
+              <option value="noite">Noite</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn--gold book__submit" type="submit">Agendar pelo WhatsApp
+          <svg class="btn__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="book__hint">Resposta no mesmo dia · Seg a Sáb</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--center" id="faq">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow eyebrow--center">Dúvidas</span>
+        <h2 class="h2">Perguntas frequentes</h2>
+      </div>
+      <div class="faq" data-reveal>
+        <details class="faq__item"><summary>A primeira avaliação tem custo? <span class="plus"></span></summary><div class="faq__a">TROQUE: explique como funciona a avaliação inicial, de forma clara e sem promessas.</div></details>
+        <details class="faq__item"><summary>Vocês atendem por convênio? <span class="plus"></span></summary><div class="faq__a">TROQUE: informe convênios aceitos e formas de pagamento (Pix, cartão, parcelamento).</div></details>
+        <details class="faq__item"><summary>Quanto tempo dura um tratamento? <span class="plus"></span></summary><div class="faq__a">TROQUE: explique que depende do caso e que o plano é apresentado na avaliação.</div></details>
+        <details class="faq__item"><summary>O atendimento é confortável para quem tem medo? <span class="plus"></span></summary><div class="faq__a">TROQUE: fale do acolhimento e dos recursos para deixar o paciente tranquilo.</div></details>
+        <details class="faq__item"><summary>Onde fica a clínica? <span class="plus"></span></summary><div class="faq__a">TROQUE: endereço e referências de como chegar / estacionamento.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="section" id="cta">
+    <div class="container">
+      <div class="cta" data-reveal>
+        <span class="cta__promo">Primeira avaliação · TROQUE condição</span>
+        <h2 class="h2">Pronto para o seu novo sorriso?</h2>
+        <p class="lead cta__sub">A gente cuida de tudo — você só precisa dar o primeiro passo.</p>
+        <div class="cta__row">
+          <a class="btn btn--gold" href="#agendar">Agendar avaliação</a>
+          <a class="btn btn--ghost" href="tel:+5511999999999">Ligar agora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Rodapé / Contato -->
+<footer class="footer" id="contato">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="nav__brand" href="#top">Lumin<b>a</b><span>Odontologia</span></a>
+        <p class="muted" style="max-width:34ch; font-size:.95rem; margin-top:1rem;">
+          Estética e saúde bucal de alto padrão. Um sorriso que ilumina tudo à sua volta.
+        </p>
+      </div>
+      <div>
+        <h4>Visite</h4>
+        <ul>
+          <li>TROQUE: Rua Exemplo, 000 — Sala 00</li>
+          <li>TROQUE: Bairro · Cidade/UF</li>
+          <li>Seg a Sex · 8h às 19h</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Fale com a gente</h4>
+        <ul>
+          <li><a href="https://wa.me/5511999999999" target="_blank" rel="noopener" data-wa>WhatsApp · (00) 00000-0000</a></li>
+          <li><a href="tel:+5511999999999">Ligar agora</a></li>
+          <li><a href="#hero">Voltar ao topo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__base">
+      <p class="footer__disclaimer">
+        © <span id="year">2026</span> Lumina Odontologia — demonstração. TROQUE pelos dados reais da clínica.
+        Conteúdo de caráter informativo; não substitui consulta. Responsável técnico: TROQUE Dr(a). Nome — CRO-UF 00000.
+      </p>
+      <p class="muted" style="font-size:.78rem;">Feito com cuidado.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp flutuante -->
+<div class="wfloat">
+  <a class="wfloat__btn" href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Lumina." target="_blank" rel="noopener" aria-label="Falar no WhatsApp" data-wa>
+    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.4.7 4.6 1.9 6.5L4 29l7.2-1.9c1.8 1 3.8 1.5 5.9 1.5 7 0 12.5-5.5 12.5-12.5S23 3 16 3zm0 22.7c-1.9 0-3.7-.5-5.2-1.4l-.4-.2-4.3 1.1 1.1-4.2-.3-.4c-1-1.6-1.6-3.5-1.6-5.4C5.6 10 10.3 5.3 16 5.3S26.4 10 26.4 15.6 21.7 25.7 16 25.7zm6-7.6c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.8.2-.2.3-.8 1.1-1 1.3-.2.2-.4.2-.7.1-1.9-1-3.2-1.7-4.5-3.8-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6-.1-.2-.8-1.8-1-2.5-.3-.7-.5-.6-.8-.6h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.7 5.8 5.1 2.2.9 3 1 4 .9.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg>
+  </a>
+</div>
+
+<script src="assets/js/ui.js" defer></script>
+<script src="assets/js/sections.js" defer></script>
+<script src="assets/js/quiz.js" defer></script>
+<script type="module" src="assets/js/scene3d.js"></script>
+</body>
+</html>

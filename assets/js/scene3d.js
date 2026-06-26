@@ -1,0 +1,140 @@
+/* ============================================================
+   LUMINA — Cena 3D no scroll (M3)
+   Um corredor de luz dourada estilizado (a "clínica" abstrata
+   e luxuosa) que a câmera atravessa conforme a página rola.
+   Three.js (vendorizado). Degrada p/ a versão estática se não
+   houver WebGL, se o usuário pedir menos movimento, ou no mobile.
+   ============================================================ */
+import * as THREE from "three";
+
+(function () {
+  "use strict";
+  var canvas = document.getElementById("scene");
+  if (!canvas) return;
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var coarse = window.matchMedia("(max-width: 760px)").matches; // mobile: fallback por ora (M4 refina)
+
+  function hasWebGL() {
+    try {
+      var c = document.createElement("canvas");
+      return !!(window.WebGLRenderingContext && (c.getContext("webgl") || c.getContext("experimental-webgl")));
+    } catch (e) { return false; }
+  }
+
+  var enable = hasWebGL() && !reduce && !coarse;
+  document.documentElement.classList.toggle("has-3d", enable);
+  if (!enable) { canvas.style.display = "none"; return; }
+
+  var GOLD = 0xe9ce86, WARM = 0xffcf8a, INK = 0x0a0e16;
+
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, powerPreference: "high-performance" });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+  renderer.setClearColor(INK, 1);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+
+  var scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(INK, 12, 86);
+
+  var camera = new THREE.PerspectiveCamera(58, 1, 0.1, 240);
+  camera.position.set(0, 1.5, 22);
+
+  /* ---- Piso e teto ---- */
+  var floor = new THREE.Mesh(
+    new THREE.PlaneGeometry(46, 340),
+    new THREE.MeshStandardMaterial({ color: 0x0b0f17, roughness: 0.42, metalness: 0.2 })
+  );
+  floor.rotation.x = -Math.PI / 2; floor.position.set(0, -3.2, -130);
+  scene.add(floor);
+
+  var ceil = new THREE.Mesh(
+    new THREE.PlaneGeometry(46, 340),
+    new THREE.MeshStandardMaterial({ color: 0x070a11, roughness: 1 })
+  );
+  ceil.rotation.x = Math.PI / 2; ceil.position.set(0, 8.5, -130);
+  scene.add(ceil);
+
+  /* ---- Paredes ---- */
+  var wallMat = new THREE.MeshStandardMaterial({ color: 0x0c121d, roughness: 0.8, metalness: 0.15 });
+  [-11, 11].forEach(function (x) {
+    var w = new THREE.Mesh(new THREE.PlaneGeometry(340, 13), wallMat);
+    w.rotation.y = x < 0 ? Math.PI / 2 : -Math.PI / 2;
+    w.position.set(x, 2.2, -130);
+    scene.add(w);
+  });
+
+  /* ---- Colunas + fios de luz dourada + luzes quentes ---- */
+  var colMat = new THREE.MeshStandardMaterial({ color: 0x10161f, roughness: 0.55, metalness: 0.25 });
+  var stripMat = new THREE.MeshBasicMaterial({ color: GOLD, fog: true });
+  var BAYS = 18, GAP = 9;
+  for (var i = 0; i < BAYS; i++) {
+    var z = 10 - i * GAP;
+    [-9.6, 9.6].forEach(function (x) {
+      var col = new THREE.Mesh(new THREE.BoxGeometry(0.5, 12, 0.5), colMat);
+      col.position.set(x, 1.5, z); scene.add(col);
+      var strip = new THREE.Mesh(new THREE.BoxGeometry(0.1, 6.4, 0.1), stripMat);
+      strip.position.set(x + (x < 0 ? 0.36 : -0.36), 1.6, z); scene.add(strip);
+    });
+    if (i % 2 === 0) {
+      var pl = new THREE.PointLight(WARM, 70, 32, 2);
+      pl.position.set(0, 5.6, z); scene.add(pl);
+    }
+  }
+
+  /* ---- Arco dourado (motivo de arcada) a meia distância ---- */
+  var arch = new THREE.Mesh(
+    new THREE.TorusGeometry(6.2, 0.12, 10, 60, Math.PI),
+    new THREE.MeshBasicMaterial({ color: GOLD, fog: true })
+  );
+  arch.position.set(0, -1.4, -52); scene.add(arch);
+
+  /* ---- Luz/glow do "resultado" no fim ---- */
+  scene.add(new THREE.AmbientLight(0x2c3a55, 0.9));
+  var endGlow = new THREE.Mesh(
+    new THREE.PlaneGeometry(26, 14),
+    new THREE.MeshBasicMaterial({ color: 0xf3d39a, fog: false })
+  );
+  endGlow.position.set(0, 2, -150); scene.add(endGlow);
+  var endLight = new THREE.PointLight(0xffd9a0, 160, 170, 2);
+  endLight.position.set(0, 3, -132); scene.add(endLight);
+
+  /* ---- Estado de scroll / mouse ---- */
+  var Z_START = 22, Z_END = -138;
+  var targetProg = 0, curZ = Z_START, camX = 0, camY = 1.5, mx = 0, my = 0;
+
+  function onScroll() {
+    var docH = document.documentElement.scrollHeight - window.innerHeight;
+    targetProg = docH > 0 ? Math.min(1, Math.max(0, window.scrollY / docH)) : 0;
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("pointermove", function (e) {
+    mx = (e.clientX / window.innerWidth) * 2 - 1;
+    my = (e.clientY / window.innerHeight) * 2 - 1;
+  }, { passive: true });
+  onScroll();
+
+  function resize() {
+    var w = window.innerWidth, h = window.innerHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  var running = true;
+  document.addEventListener("visibilitychange", function () { running = !document.hidden; if (running) loop(); });
+
+  function loop() {
+    if (!running) return;
+    requestAnimationFrame(loop);
+    var tz = Z_START + (Z_END - Z_START) * targetProg;
+    curZ += (tz - curZ) * 0.06;
+    camX += (mx * 1.7 - camX) * 0.04;
+    camY += (1.5 - my * 0.55 - camY) * 0.04;
+    camera.position.set(camX, camY, curZ);
+    camera.lookAt(camX * 0.4, 1.7, curZ - 22);
+    renderer.render(scene, camera);
+  }
+  loop();
+})();
